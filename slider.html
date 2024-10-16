@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>slider</title>
+</head>
+<link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;padding: 0;
+    }
+    .ss{
+        background-color: #dde4ff;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        
+    }
+    .card-wrapper{
+      
+       max-width: 1100px;
+       margin: 0 60px 35px;
+       padding: 20px 10px;
+       overflow: hidden;
+/* display: flex;
+
+justify-content: center;
+align-items: center; */
+        background-color: #dde4ff;
+        .card-list{
+            list-style: none;
+            /* border: 1px solid black; */
+            .card-item{
+                /* margin: 10px; */
+                a{
+                   /* width: 400px;  */
+                   user-select: none;
+                   display: block;
+                   background-color: #fff;
+                   padding: 18px;
+                   border-radius: 12px;
+                   border: 2px solid transparent;
+                   text-decoration: none;
+                   box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+                   transition: 0.2s ease;
+                   &:hover{
+                    border-color: blue;
+                    /* background-color: red; */
+                    .card-button{
+                        color: #fff;
+                        background-color: blue;
+                    }
+                   }
+                  
+                   img{
+                    width: 100%;
+                    aspect-ratio: 16/9;
+                    object-fit: cover;
+                    border-radius: 10px;
+                   }
+                   .badge{
+                    color: blue;
+                    padding: 8px 16px;
+                    font-size: 0.95rem;
+                    font-weight: 500;
+                    margin: 16px 0 18px;
+                    background-color: #dde4ff;
+                    width: fit-content;
+                    border-radius: 50px;
+                  
+                   }
+                   .card-title{
+                    font-size: 1.19rem;
+                    color: #000;
+                    font-weight: 600;
+                   }
+                   .card-button{
+                    height: 35px;
+                    width: 35px;
+                    font-size: 20px;
+                    color: blue;
+                    border-radius: 50%;
+                    margin: 30px 0 5px;
+                    background-color: none;
+                    cursor: pointer;
+                    border: 2px solid blue;
+                    transform: rotate(-45deg);
+                   }
+                }
+            }
+        }
+    }
+</style>
+<body>
+    <div class="ss">
+    <div class="container swiper">
+        <div class="card-wrapper">
+          <ul class="card-list swiper-wrapper">
+            <li class="card-item swiper-slide">
+                <a href="
+                #" class="card-link">
+            
+            <img src="image/allimage/blog-img1.png" alt="" class="card-image">
+
+            <div class="badge">Developer</div>
+            <h2 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, perferendis.</h2>
+            <button class="card-button">
+                &#8594;
+            </button>
+            </a>
+            </li>
+            <li class="card-item swiper-slide">
+                <a href="
+                #" class="card-link">
+            
+            <img src="image/allimage/blog-img2.png" alt="" class="card-image">
+
+            <div class="badge">Developer</div>
+            <h2 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, perferendis.</h2>
+            <button class="card-button">
+                &#8594;
+            </button>
+            </a>
+            </li>
+            <li class="card-item swiper-slide">
+                <a href="
+                #" class="card-link">
+            
+            <img src="image/allimage/blog-img3.png" alt="" class="card-image">
+
+            <div class="badge">ui/ux</div>
+            <h2 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, perferendis.</h2>
+            <button class="card-button">
+                &#8594;
+            </button>
+            </a>
+            </li>
+            <li class="card-item swiper-slide">
+                <a href="
+                #" class="card-link">
+            
+            <img src="image/allimage/blog-img17.png" alt="" class="card-image">
+
+            <div class="badge">wordpress</div>
+            <h2 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, perferendis.</h2>
+            <button class="card-button">
+                &#8594;
+            </button>
+            </a>
+            </li>
+            <li class="card-item swiper-slide">
+                <a href="
+                #" class="card-link">
+            
+            <img src="image/allimage/blog-img18.png" alt="" class="card-image">
+
+            <div class="badge">html</div>
+            <h2 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, perferendis.</h2>
+            <button class="card-button">
+                &#8594;
+            </button>
+            </a>
+            </li>
+            <li class="card-item swiper-slide">
+                <a href="
+                #" class="card-link">
+            
+            <img src="image/allimage/blog-img19.png" alt="" class="card-image">
+
+            <div class="badge">wix</div>
+            <h2 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, perferendis.</h2>
+            <button class="card-button">
+                &#8594;
+            </button>
+            </a>
+            </li>
+          </ul>
+          <div class="swiper-pagination"></div>
+
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script
+    src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+    new Swiper('.card-wrapper', {
+  // Optional parameters
+//   direction: 'vertical',
+  loop: true,
+spaceBetween:30,
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+    clickable:true,
+    dynamicBullets:true
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+breakpoints:{
+    0:{
+        slidesPerView:1
+    },
+    768 :{
+        slidesPerView:2
+    },  
+    1024 :{
+        slidesPerView:3
+    
+}
+}
+  
+});
+
+setInterval(() => {
+    document.querySelector(".swiper-button-next").click()
+}, 2000);
+    </script>
+</body>
+</html>
