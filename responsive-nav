@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>responsive header</title>
+        <style>
+           @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"); 
+           *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+           }
+           nav{
+            padding: 10px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: blue;
+            color: white;
+            position: relative;
+            height: 70px;
+            
+
+           }
+           li a{
+            color: white;
+           }
+           ul{
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap:30px;
+            transition: 0.8s all;
+
+           
+            li{
+                a{
+                    text-decoration: none;
+                    color: white ;
+                    text-transform: capitalize;
+                }
+            }
+           }
+           body{
+            background-color: aqua;
+           }
+           .menu-icon{
+            display: none;
+           }
+           @media screen and (max-width:768px) {
+            nav ul{
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background-color: rgb(34, 34, 122);
+                right: 0;
+                flex-direction: column;
+                text-align: center;
+                gap: 0;
+                overflow: hidden;
+                li{
+                    padding: 20px;
+                }
+                
+            }
+            .menu-icon{
+                display: block;
+            }
+           }
+    </style>
+    </head>
+    <body>
+        <nav>
+            <div class="log">
+                <h1>logo</h1>
+            </div>
+            <ul id="menulist">
+                <li><a href="#">home</a></li>
+                <li><a href="#">about</a></li>
+                <li><a href="#">Service</a></li>
+                <li><a href="#">contact us</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+            <div class="menu-icon">
+                <i class="fa-solid fa-bars" onclick="togglemenu()"></i>
+            </div>
+        </nav>
+        <script>
+
+    let t=document.getElementById("menulist")
+    t.style.maxHeight="0px";
+    function togglemenu(){
+
+   
+    if (   t.style.maxHeight=="0px") {
+           t.style.maxHeight="300px"
+    }
+    else{
+         t.style.maxHeight="0px";
+    } }
+</script>
+    </body>
+</html>
