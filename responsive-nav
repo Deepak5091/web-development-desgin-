@@ -43,7 +43,13 @@
             }
            }
            body{
-            background-color: aqua;
+            color: white;
+            background-image:
+                linear-gradient(45deg,
+                    rgba(245, 70, 66, 0.75),
+                    rgba(8, 83, 156, 0.75)), 
+                      url(
+'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190710102234/download3.png');
            }
            .menu-icon{
             display: none;
@@ -86,6 +92,7 @@
                 <i class="fa-solid fa-bars" onclick="togglemenu()"></i>
             </div>
         </nav>
+        <h2>hwy</h2>
         <script>
 
     let t=document.getElementById("menulist")
