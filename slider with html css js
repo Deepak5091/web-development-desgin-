@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>slider try</title>
+    </head>
+    <style>
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css");
+        *{
+            margin: 0;
+            padding: 0;box-sizing: border-box;
+        }
+        body{
+            background-color: rgba(30, 127, 127, 0.098);
+        }
+        .wrapper i:nth-child(1){
+            left: -22px;
+       
+        }
+        .wrapper i:last-child{
+            right: -22px;
+           
+        }
+        .wrapper{
+          
+            max-width: 1100px;
+            width: 100%;
+            height: 600px;
+            margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+            position: relative;
+            i{
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                cursor: pointer;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: white;
+                border-radius: 50%;
+                text-align: center;
+                font-size: 1.25rem;
+                line-height: 50px;
+            }
+     
+        }
+        .carousel.no-transtion{
+            scroll-behavior: auto;
+        }
+
+        .carousel.dragging{
+            scroll-snap-type: none;
+            scroll-behavior: auto;
+        }
+        ul.carousel{
+            list-style: none;
+            scroll-behavior: smooth;
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: calc((100% / 3) - 12px);
+            /* overflow: hidden; */
+            scroll-snap-type: x mandatory;
+          overflow-x: auto;
+          scrollbar-width: 0;
+          gap: 16px;
+          user-select: none;
+         
+            .img{
+                /* scroll-snap-align: start; */
+                /* width: 400px; */
+                background-color: rgb(255, 255, 255);
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-shadow: -2px 5px 6px 1px #f92424;
+
+                img{
+                    width: 100%;
+                    border-radius: 10px;
+
+                }
+            }
+        }
+        .carousel::-webkit-scrollbar{
+            display: none;
+        }
+        .card{
+            scroll-snap-align: start;
+        }
+        @media screen and (max-width:992px) {
+          .wrapper .carousel{
+            grid-auto-columns: calc((100% / 2) - 9px);
+           } 
+        }
+        @media screen and (max-width:600px) {
+          .wrapper .carousel{
+            grid-auto-columns:100%;
+           } 
+        }
+    </style>
+    <body>
+        <div class="wrapper">
+            <i class="fa-solid fa-angle-left" id="left"></i>
+            <ul class="carousel">
+                <li class="card">
+                    <div class="img">
+                        <img src="/image/allimage/blog-img1.png"
+                            draggable="false" alt>
+                        <h3>Developer</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                </li>
+                <li class="card">
+                    <div class="img">
+                        <img src="/image/allimage/blog-img17.png"
+                            draggable="false" alt>
+                        <h3>Designner</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                </li>
+                <li class="card">
+                    <div class="img">
+                        <img src="/image/allimage/blog-img18.png"
+                            draggable="false" alt>
+                        <h3>Degital Marketing</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                </li>
+                <li class="card">
+                    <div class="img">
+                        <img src="/image/allimage/blog-img2.png"
+                            draggable="false" alt>
+                        <h3>Seo</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                </li>
+                <li class="card">
+                    <div class="img">
+                        <img src="/image/allimage/blog-img3.png"
+                            draggable="false" alt>
+                        <h3>Developer</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                </li>
+            </ul>
+            <i class="fa-solid fa-angle-right" id="right"></i>
+        </div>
+        <script>
+            const arrowBtns=document.querySelectorAll(".wrapper i");
+            const wrapper=document.querySelector(".wrapper");
+            const carousel=document.querySelector(".carousel");
+            const firstcardWidth=document.querySelector(".card").offsetWidth;
+            const carouselChildrens=[...carousel.children];
+const cardPerview=Math.round(carousel.offsetWidth / firstcardWidth);
+// console.log(cardPerview);
+carouselChildrens.slice(-cardPerview).reverse().forEach(card=>{ carousel.insertAdjacentHTML("afterbegin",card.outerHTML)});
+carouselChildrens.slice(0,cardPerview).forEach(card=>{ carousel.insertAdjacentHTML("beforeEnd",card.outerHTML)});
+
+            carouselChildrens.slice().reverse();
+            let isDragging=false,startX,startScrollLeft,timeoutId;
+arrowBtns.forEach(btn => {
+    btn.addEventListener("click",()=>{
+        carousel.scrollLeft += btn.id==="left" ? -firstcardWidth : firstcardWidth;
+    })
+});
+
+
+
+function dragStart(e) {
+    isDragging=true;
+    startX=e.pageX;
+    carousel.classList.add("dragging");
+    // console.log(startX);
+    startScrollLeft=carousel.scrollLeft;
+
+    
+}
+const dragging=(e)=>{
+    if(!isDragging) return;
+    carousel.scrollLeft=startScrollLeft-(e.pageX - startX);
+  
+    
+};
+const dragStop=()=>{
+    isDragging=false;
+    carousel.classList.remove("dragging");
+}
+const infinitescroll=()=>{
+    if(carousel.scrollLeft===0){
+        carousel.classList.add("no-transtion");
+        console.log('you are reched to left');
+        carousel.scrollLeft=carousel.scrollWidth - (2 * carousel.offsetWidth);
+        carousel.classList.remove("no-transtion");
+        
+    }
+    else if( Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth){
+        carousel.classList.add("no-transtion");
+        carousel.scrollLeft=carousel.offsetWidth;
+        console.log('you are reached to right');
+        carousel.classList.remove("no-transtion");
+    }
+    clearTimeout(timeoutId);
+    if(!wrapper.matches(":hover"))autoplay();
+}
+//  auto play slide
+ function autoplay() {
+    if(window.innerWidth<800) return;
+    timeoutId= setTimeout(()=>{
+        carousel.scrollLeft+=firstcardWidth
+    },2500)
+ }
+ autoplay()
+
+            carousel.addEventListener("mousedown",dragStart);
+            carousel.addEventListener("mousemove",dragging);
+            carousel.addEventListener("mouseup",dragStop);
+            carousel.addEventListener("scroll",infinitescroll);
+            carousel.addEventListener("mouseenter",()=>  clearTimeout(timeoutId));
+            carousel.addEventListener("mouseleave",autoplay);
+            
+        </script>
+    </body>
+</html>
